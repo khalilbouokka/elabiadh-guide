@@ -8,6 +8,7 @@
         :root {
             --bg-body: #121212;
             --card-bg: #1e1e1e;
+            --card-active: #252525;
             --text-main: #f3f4f6;
             --text-muted: #9ca3af;
             --accent: #10b981;
@@ -96,14 +97,25 @@
             border: 1px solid var(--border-color);
             border-radius: 12px;
             overflow: hidden;
+            transition: border-color 0.2s;
+        }
+
+        .category-card:hover {
+            border-color: var(--accent);
         }
 
         .category-header {
             display: flex;
             align-items: center;
+            justify-content: space-between;
             padding: 16px;
             cursor: pointer;
             user-select: none;
+        }
+
+        .cat-main-info {
+            display: flex;
+            align-items: center;
         }
 
         .cat-icon {
@@ -122,20 +134,33 @@
             color: var(--text-muted);
         }
 
-        /* قائمة المحلات داخل كل قسم */
+        .arrow-icon {
+            color: var(--text-muted);
+            font-size: 14px;
+            transition: transform 0.3s ease;
+        }
+
         .shops-list {
-            display: block;
+            display: none;
             background-color: #161616;
             border-top: 1px solid var(--border-color);
             padding: 12px;
+        }
+
+        .category-card.active .shops-list {
+            display: block;
+        }
+
+        .category-card.active .arrow-icon {
+            transform: rotate(180deg);
         }
 
         .shop-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #282828;
+            padding: 12px 8px;
+            border-bottom: 1px solid #222;
         }
 
         .shop-item:last-child {
@@ -147,6 +172,11 @@
             font-weight: 500;
         }
 
+        .shop-actions {
+            display: flex;
+            gap: 6px;
+        }
+
         .shop-actions a {
             display: inline-block;
             padding: 6px 12px;
@@ -154,7 +184,6 @@
             text-decoration: none;
             font-size: 12px;
             font-weight: bold;
-            margin-right: 4px;
         }
 
         .btn-call {
@@ -186,23 +215,46 @@
         <header>
             <h1>دليل الأبيض سيدي الشيخ</h1>
             <p>دليلك المحلي الفوري للخدمات، المحلات، والتواصل المباشر</p>
-            
-            <!-- هذا الزر يوجه لواتساب الخاص بك لإضافة محلات جديدة -->
             <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20محلي%20أو%20خدمتي%20إلى%20الدليل" class="add-btn">💬 أضف محلك أو خدمتك مجاناً</a>
         </header>
 
-        <input type="text" class="search-box" placeholder="ابحث عن تاكسي، محل، صيانة، تقسيط...">
+        <input type="text" class="search-box" placeholder="ابحث عن تاكسي، صيانة، مجوهرات...">
 
         <div class="categories-list">
             
-            <!-- قسم التاكسي -->
+            <!-- 1. مجوهرات وذهب -->
             <div class="category-card">
-                <div class="category-header">
-                    <span class="cat-icon">🚗</span>
-                    <div class="cat-info">
-                        <h3>تاكسي ونقل</h3>
-                        <p>سيارات الأجرة ونقل البضائع</p>
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">💍</span>
+                        <div class="cat-info">
+                            <h3>مجوهرات وذهب</h3>
+                            <p>محلات بيع الحلي والمجوهرات</p>
+                        </div>
                     </div>
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">قريبا يتم إضافة المحلات</span>
+                        <div class="shop-actions">
+                            <a href="https://wa.me/213557342198?text=أريد%20تسجيل%20محل%20مجوهرات" class="btn-wa">إضافة محل</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 2. تاكسي ونقل -->
+            <div class="category-card">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">🚗</span>
+                        <div class="cat-info">
+                            <h3>تاكسي ونقل</h3>
+                            <p>سيارات الأجرة ونقل البضائع</p>
+                        </div>
+                    </div>
+                    <span class="arrow-icon">▼</span>
                 </div>
                 <div class="shops-list">
                     <div class="shop-item">
@@ -214,14 +266,17 @@
                 </div>
             </div>
 
-            <!-- قسم البيع بالتقسيط -->
+            <!-- 3. بيع بالتقسيط -->
             <div class="category-card">
-                <div class="category-header">
-                    <span class="cat-icon">💳</span>
-                    <div class="cat-info">
-                        <h3>بيع بالتقسيط</h3>
-                        <p>أجهزة كهرومنزلية وإلكترونيات</p>
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">💳</span>
+                        <div class="cat-info">
+                            <h3>بيع بالتقسيط</h3>
+                            <p>أجهزة كهرومنزلية وإلكترونيات</p>
+                        </div>
                     </div>
+                    <span class="arrow-icon">▼</span>
                 </div>
                 <div class="shops-list">
                     <div class="shop-item">
@@ -234,14 +289,17 @@
                 </div>
             </div>
 
-            <!-- قسم الهواتف والتكنولوجيا -->
+            <!-- 4. هواتف وتكنولوجيا -->
             <div class="category-card">
-                <div class="category-header">
-                    <span class="cat-icon">📱</span>
-                    <div class="cat-info">
-                        <h3>هواتف وتكنولوجيا</h3>
-                        <p>صيانة وإكسسوارات الهواتف</p>
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">📱</span>
+                        <div class="cat-info">
+                            <h3>هواتف وتكنولوجيا</h3>
+                            <p>صيانة وإكسسوارات الهواتف</p>
+                        </div>
                     </div>
+                    <span class="arrow-icon">▼</span>
                 </div>
                 <div class="shops-list">
                     <div class="shop-item">
@@ -253,13 +311,106 @@
                 </div>
             </div>
 
+            <!-- 5. أواني وأثاث منزلي -->
+            <div class="category-card">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">🛋️</span>
+                        <div class="cat-info">
+                            <h3>أواني وأثاث</h3>
+                            <p>تجهيزات المنازل والأثاث المنزلي</p>
+                        </div>
+                    </div>
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">معرض الأثاث المنزلي</span>
+                        <div class="shop-actions">
+                            <a href="tel:0660000000" class="btn-call">📞 اتصال</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 6. صيدليات ومصالح صحية -->
+            <div class="category-card">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">🏥</span>
+                        <div class="cat-info">
+                            <h3>صيدليات وخدمات صحية</h3>
+                            <p>الصيدليات المناوبة والمصالح الطبية</p>
+                        </div>
+                    </div>
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">صيدلية الدينا</span>
+                        <div class="shop-actions">
+                            <a href="tel:0660000000" class="btn-call">📞 اتصال</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 7. خدمات الصيانة والمهن الحرة -->
+            <div class="category-card">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">🛠️</span>
+                        <div class="cat-info">
+                            <h3>خدمات الصيانة والمهن</h3>
+                            <p>كهرباء، سباكة، تكييف، وحرف متنوعة</p>
+                        </div>
+                    </div>
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">حرفي تركيب التكييف والصيانة</span>
+                        <div class="shop-actions">
+                            <a href="tel:0660000000" class="btn-call">📞 اتصال</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 8. مواد غذائية ومتاجر عامة -->
+            <div class="category-card">
+                <div class="category-header" onclick="toggleCategory(this)">
+                    <div class="cat-main-info">
+                        <span class="cat-icon">🛒</span>
+                        <div class="cat-info">
+                            <h3>مواد غذائية ومحلات عامة</h3>
+                            <p>مجمعات تجارية ومواد غذائية بالتجزئة</p>
+                        </div>
+                    </div>
+                    <span class="arrow-icon">▼</span>
+                </div>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">ماتجار المواد الغذائية العامة</span>
+                        <div class="shop-actions">
+                            <a href="tel:0660000000" class="btn-call">📞 اتصال</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
         <footer>
-            <!-- هذا الزر يوجه إلى واتساب الخاص بك أيضاً -->
             <p>هل تملك محلاً؟ <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20رقمي%20للدليل">تواصل معنا لإضافة رقمك</a></p>
         </footer>
     </div>
 
+    <script>
+        function toggleCategory(header) {
+            const card = header.parentElement;
+            card.classList.toggle('active');
+        }
+    </script>
 </body>
 </html>
