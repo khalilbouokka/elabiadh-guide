@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الأبيض سيدي الشيخ الرقمي</title>
+    <title>دليل الأبيض سيدي الشيخ</title>
     <style>
         :root {
-            --bg-body: #0f172a;
-            --card-bg: #1e293b;
-            --text-main: #f8fafc;
-            --text-muted: #94a3b8;
-            --accent-green: #10b981;
-            --accent-blue: #3b82f6;
-            --accent-maps: #ea580c;
-            --border-color: #334155;
+            --bg-body: #121212;
+            --card-bg: #1e1e1e;
+            --sub-bg: #181818;
+            --text-main: #f3f4f6;
+            --text-muted: #9ca3af;
+            --accent: #10b981;
+            --accent-hover: #059669;
+            --border-color: #2d3748;
         }
 
         * {
@@ -30,179 +30,193 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            min-height: 100vh;
         }
 
         .container {
             width: 100%;
-            max-width: 650px;
+            max-width: 500px;
         }
 
         header {
             text-align: center;
             margin-bottom: 24px;
-            padding: 16px 0;
+            padding: 20px 0;
         }
 
-        header h1 {
+        h1 {
             font-size: 24px;
-            font-weight: 800;
-            color: #ffffff;
             margin-bottom: 8px;
+            color: var(--text-main);
         }
 
-        header p {
+        p {
             color: var(--text-muted);
             font-size: 14px;
+            margin-bottom: 16px;
+        }
+
+        .add-btn {
+            display: block;
+            width: 100%;
+            background-color: var(--accent);
+            color: #fff;
+            text-align: center;
+            padding: 14px;
+            border-radius: 12px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 20px;
+            transition: background 0.2s;
+        }
+
+        .add-btn:hover {
+            background-color: var(--accent-hover);
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 12px 16px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            color: var(--text-main);
+            font-size: 16px;
+            margin-bottom: 20px;
+            outline: none;
+        }
+
+        .categories-list {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin-bottom: 24px;
         }
 
         .category-card {
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            border-radius: 14px;
-            margin-bottom: 16px;
+            border-radius: 12px;
             overflow: hidden;
+            transition: border-color 0.2s;
         }
 
-        .category-header {
-            padding: 16px;
+        .category-card:hover {
+            border-color: var(--accent);
+        }
+
+        .category-header, .sub-header {
             display: flex;
-            justify-content: space-between;
             align-items: center;
+            justify-content: space-between;
+            padding: 16px;
             cursor: pointer;
             user-select: none;
-            background-color: #1e293b;
         }
 
         .cat-main-info {
             display: flex;
             align-items: center;
-            gap: 12px;
         }
 
         .cat-icon {
-            font-size: 22px;
+            font-size: 24px;
+            margin-left: 16px;
         }
 
         .cat-info h3 {
             font-size: 16px;
-            font-weight: 700;
+            margin-bottom: 4px;
         }
 
         .cat-info p {
             font-size: 12px;
+            margin: 0;
             color: var(--text-muted);
         }
 
         .arrow-icon {
-            font-size: 12px;
             color: var(--text-muted);
+            font-size: 14px;
             transition: transform 0.3s ease;
         }
 
         .shops-list {
             display: none;
-            padding: 0 16px 16px 16px;
+            background-color: #161616;
             border-top: 1px solid var(--border-color);
-            background-color: #0f172a;
+            padding: 8px 12px;
         }
 
-        .category-card.active .shops-list {
+        .category-card.active > .shops-list {
             display: block;
         }
 
-        .category-card.active .arrow-icon {
+        .category-card.active > .category-header .arrow-icon,
+        .sub-category.active > .sub-header .arrow-icon {
             transform: rotate(180deg);
         }
 
+        .sub-category {
+            background-color: var(--sub-bg);
+            border: 1px solid #282828;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            overflow: hidden;
+        }
+
+        .sub-header {
+            padding: 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        .sub-content {
+            display: none;
+            padding: 8px 12px;
+            background-color: #111111;
+            border-top: 1px solid #282828;
+        }
+
+        .sub-category.active > .sub-content {
+            display: block;
+        }
+
         .shop-item {
-            padding: 14px 0;
-            border-bottom: 1px solid var(--border-color);
             display: flex;
-            flex-direction: column;
-            gap: 10px;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #222;
         }
 
         .shop-item:last-child {
             border-bottom: none;
         }
 
-        .shop-header-info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
-
         .shop-name {
-            font-weight: bold;
-            font-size: 15px;
-            color: #ffffff;
+            font-size: 13px;
         }
 
-        .shop-location {
+        .btn-wa {
+            background-color: #059669;
+            color: white;
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 30px;
             font-size: 13px;
             color: var(--text-muted);
         }
 
-        .action-buttons {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-
-        .btn-action {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 6px;
-            padding: 8px 12px;
-            border-radius: 8px;
+        footer a {
+            color: var(--accent);
             text-decoration: none;
-            font-weight: bold;
-            font-size: 13px;
-            flex: 1;
-            min-width: 90px;
-            text-align: center;
-            transition: opacity 0.2s;
-        }
-
-        .btn-action:hover {
-            opacity: 0.9;
-        }
-
-        .btn-call {
-            background-color: var(--accent-blue);
-            color: white;
-        }
-
-        .btn-wa {
-            background-color: var(--accent-green);
-            color: white;
-        }
-
-        .btn-map {
-            background-color: var(--accent-maps);
-            color: white;
-        }
-
-        .add-btn-box {
-            text-align: center;
-            margin-top: 24px;
-            padding: 16px;
-            background: var(--card-bg);
-            border-radius: 14px;
-            border: 1px dashed var(--border-color);
-        }
-
-        .btn-add-me {
-            display: inline-block;
-            background-color: var(--accent-green);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 10px;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
         }
     </style>
 </head>
@@ -210,186 +224,187 @@
 
     <div class="container">
         <header>
-            <h1>🇩🇿 دليل الأبيض سيدي الشيخ الرقمي</h1>
-            <p>دليلك المحلي المباشر للخدمات والمحلات والأطباء</p>
+            <h1>دليل الأبيض سيدي الشيخ</h1>
+            <p>دليلك المحلي الفوري للخدمات، المحلات، والتواصل المباشر</p>
+            <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20محلي%20أو%20خدمتي%20إلى%20الدليل" class="add-btn">💬 أضف محلك أو خدمتك مجاناً</a>
         </header>
+
+        <input type="text" class="search-box" placeholder="ابحث عن تاكسي، صيانة، مواد غذائية...">
 
         <div class="categories-list">
 
-            <!-- 1. قسم الصحة والأطباء -->
+            <!-- 1. خدمات النقل والسيارات -->
             <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(this)">
+                <div class="category-header" onclick="toggleAccordion(event, this)">
                     <div class="cat-main-info">
-                        <span class="cat-icon">🩺</span>
+                        <span class="cat-icon">🚗</span>
                         <div class="cat-info">
-                            <h3>الصحة والأطباء</h3>
-                            <p>عيادات، صيدليات، وتحاليل طبية</p>
+                            <h3>النقل والسيارات</h3>
+                            <p>كلونديستان، تاكسي، ونقل البضائع</p>
                         </div>
                     </div>
                     <span class="arrow-icon">▼</span>
                 </div>
+                
                 <div class="shops-list">
-                    <div class="shop-item">
-                        <div class="shop-header-info">
-                            <span class="shop-name">عيادة الدكتور (مثال)</span>
-                            <span class="shop-location">📍 وسط المدينة</span>
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>🚕 كلونديستان</span>
+                            <span class="arrow-icon">▼</span>
                         </div>
-                        <div class="action-buttons">
-                            <a href="tel:0557342198" class="btn-action btn-call">📞 إتصال</a>
-                            <a href="https://wa.me/213557342198?text=السلام%20عليكم" class="btn-action btn-wa">💬 واتساب</a>
-                            <a href="https://maps.google.com/?q=32.8942,0.5482" target="_blank" class="btn-action btn-map">📍 الخريطة</a>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة سائقين</span>
+                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20كلونديستان" class="btn-wa">إضافة رقم</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>🚕 سيارات الأجرة (تاكسي)</span>
+                            <span class="arrow-icon">▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة التاكسي</span>
+                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20سيارة%20تاكسي" class="btn-wa">إضافة رقم</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>📦 نقل البضائع والشحن</span>
+                            <span class="arrow-icon">▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة وسائل النقل</span>
+                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20نقل%20البضائع" class="btn-wa">إضافة رقم</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 2. قسم الهواتف الذكية -->
+            <!-- 2. البيع بالتقسيط -->
             <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(this)">
+                <div class="category-header" onclick="toggleAccordion(event, this)">
                     <div class="cat-main-info">
-                        <span class="cat-icon">📱</span>
+                        <span class="cat-icon">💳</span>
                         <div class="cat-info">
-                            <h3>هواتف وإكسسوارات</h3>
-                            <p>بيع الهواتف، الإكسسوارات، والصيانة</p>
+                            <h3>بيع بالتقسيط</h3>
+                            <p>أجهزة كهرومنزلية، هواتف، وأثاث</p>
                         </div>
                     </div>
                     <span class="arrow-icon">▼</span>
                 </div>
+                
                 <div class="shops-list">
-                    <div class="shop-item">
-                        <div class="shop-header-info">
-                            <span class="shop-name">محل الهواتف (مثال)</span>
-                            <span class="shop-location">📍 الشارع الرئيسي</span>
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>📺 كهرومنزليات بالتقسيط</span>
+                            <span class="arrow-icon">▼</span>
                         </div>
-                        <div class="action-buttons">
-                            <a href="tel:0557342198" class="btn-action btn-call">📞 إتصال</a>
-                            <a href="https://wa.me/213557342198?text=السلام%20عليكم%20أريد%20استفسار" class="btn-action btn-wa">💬 واتساب</a>
-                            <a href="https://maps.google.com/?q=32.8942,0.5482" target="_blank" class="btn-action btn-map">📍 الخريطة</a>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة المحلات</span>
+                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20كهرومنزليات%20بالتقسيط" class="btn-wa">إضافة محل</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>📱 هواتف وإلكترونيات بالتقسيط</span>
+                            <span class="arrow-icon">▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة المحلات</span>
+                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20هواتف%20بالتقسيط" class="btn-wa">إضافة محل</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>🛋️ أثاث وتجهيزات بالتقسيط</span>
+                            <span class="arrow-icon">▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة المحلات</span>
+                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20أثاث%20بالتقسيط" class="btn-wa">إضافة محل</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 3. قسم الأثاث -->
+            <!-- 3. الصحة والخدمات الطبية -->
             <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(this)">
+                <div class="category-header" onclick="toggleAccordion(event, this)">
                     <div class="cat-main-info">
-                        <span class="cat-icon">🛋️</span>
+                        <span class="cat-icon">🏥</span>
                         <div class="cat-info">
-                            <h3>الأثاث والديكور</h3>
-                            <p>أثاث منزلي، غرف نوم، وصالونات</p>
+                            <h3>الصحة والطب</h3>
+                            <p>صيدليات، أطباء وعيادات</p>
                         </div>
                     </div>
                     <span class="arrow-icon">▼</span>
                 </div>
+                
                 <div class="shops-list">
-                    <div class="shop-item">
-                        <div class="shop-header-info">
-                            <span class="shop-name">محل الأثاث (مثال)</span>
-                            <span class="shop-location">📍 حي 100 مسكن</span>
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>💊 الصيدليات والصيدليات المناوبة</span>
+                            <span class="arrow-icon">▼</span>
                         </div>
-                        <div class="action-buttons">
-                            <a href="tel:0557342198" class="btn-action btn-call">📞 إتصال</a>
-                            <a href="https://wa.me/213557342198?text=السلام%20عليكم%20أريد%20الاستفسار%20عن%20الأثاث" class="btn-action btn-wa">💬 واتساب</a>
-                            <a href="https://maps.google.com/?q=32.8942,0.5482" target="_blank" class="btn-action btn-map">📍 الخريطة</a>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة الصيدليات</span>
+                                <a href="https://wa.me/213557342198?text=إضافة%20صيدلية" class="btn-wa">إضافة صيدلية</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>👨‍⚕️ الأطباء والعيادات الطبية</span>
+                            <span class="arrow-icon">▼</span>
+                        </div>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة العيادات</span>
+                                <a href="https://wa.me/213557342198?text=إضافة%20عيادة%20طبيبة" class="btn-wa">إضافة عيادة</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
 
-            <!-- 4. قسم الأجهزة الكهرومنزلية -->
+            <!-- 4. الأواني والأثاث المنزلي -->
             <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(this)">
+                <div class="category-header" onclick="toggleAccordion(event, this)">
                     <div class="cat-main-info">
-                        <span class="cat-icon">⚡</span>
+                        <span class="cat-icon">🏠</span>
                         <div class="cat-info">
-                            <h3>الأجهزة الكهرومنزلية</h3>
-                            <p>ثلاجات، غسالات، وتلفزيونات</p>
+                            <h3>الأواني والأثاث</h3>
+                            <p>محلات الأواني ومحلات الأثاث المنزلي</p>
                         </div>
                     </div>
                     <span class="arrow-icon">▼</span>
                 </div>
+                
                 <div class="shops-list">
-                    <div class="shop-item">
-                        <div class="shop-header-info">
-                            <span class="shop-name">محل الأجهزة الكهرومنزلية (مثال)</span>
-                            <span class="shop-location">📍 وسط المدينة</span>
+                    <div class="sub-category">
+                        <div class="sub-header" onclick="toggleAccordion(event, this)">
+                            <span>🍽️ الأواني المنزلية والتجهيزات</span>
+                            <span class="arrow-icon">▼</span>
                         </div>
-                        <div class="action-buttons">
-                            <a href="tel:0557342198" class="btn-action btn-call">📞 إتصال</a>
-                            <a href="https://wa.me/213557342198?text=السلام%20عليكم%20أريد%20الاستفسار%20عن%20جهاز" class="btn-action btn-wa">💬 واتساب</a>
-                            <a href="https://maps.google.com/?q=32.8942,0.5482" target="_blank" class="btn-action btn-map">📍 الخريطة</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 5. قسم الحرف والصيانة -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">🛠️</span>
-                        <div class="cat-info">
-                            <h3>الحرف والبناء والصيانة</h3>
-                            <p>ترميم، رصاصة، كهرباء، ونقاشة</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                <div class="shops-list">
-                    <div class="shop-item">
-                        <div class="shop-header-info">
-                            <span class="shop-name">ورشة الصيانة (مثال)</span>
-                            <span class="shop-location">📍 وسط المدينة</span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="tel:0557342198" class="btn-action btn-call">📞 إتصال</a>
-                            <a href="https://wa.me/213557342198?text=السلام%20عليكم" class="btn-action btn-wa">💬 واتساب</a>
-                            <a href="https://maps.google.com/?q=32.8942,0.5482" target="_blank" class="btn-action btn-map">📍 الخريطة</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 6. قسم الصحافة والإعلام -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">📰</span>
-                        <div class="cat-info">
-                            <h3>إعلام وصحافة محلية</h3>
-                            <p>تغطيات إعلامية وصفحات إخبارية</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                <div class="shops-list">
-                    <div class="shop-item">
-                        <div class="shop-header-info">
-                            <span class="shop-name">التغطيات الإخبارية والمحلية</span>
-                            <span class="shop-location">📍 الأبيض سيدي الشيخ</span>
-                        </div>
-                        <div class="action-buttons">
-                            <a href="https://wa.me/213557342198?text=أريد%20إضافة%20صفحتي%20الإعلامية" class="btn-action btn-wa">➕ إضافة صفحتك معنا</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <!-- زر إضافة خيار محلك -->
-        <div class="add-btn-box">
-            <p style="margin-bottom: 12px; font-size: 13px;">هل لديك محل أو تقدم خدمة في الأبيض سيدي الشيخ؟</p>
-            <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20نشاطي%20في%20الدليل" class="btn-add-me">➕ أضف نشاطك معنا مجاناً</a>
-        </div>
-    </div>
-
-    <script>
-        function toggleAccordion(header) {
-            const card = header.parentElement;
-            card.classList.toggle('active');
-        }
-    </script>
-</body>
-</html>
+                        <div class="sub-content">
+                            <div class="shop-item">
+                                <span class="shop-name">قريبا يتم إضافة محلات الأواني</span>
+                                <a href="
