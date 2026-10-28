@@ -61,6 +61,15 @@ header p{color:var(--muted);font-size:14px;margin-top:6px}
 .b.add{background:transparent;border:1px solid var(--sand);color:var(--sand)}
 .more{display:inline-block;margin-top:8px;font-size:13px;color:var(--sand)}
 
+.sos{margin:0 0 14px}
+.sos h2,.duty h2{font-size:15px;font-weight:700;margin-bottom:8px}
+.sos .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.sos a{background:#3a1d24;border:1px solid #7a3340;border-radius:12px;padding:10px 4px;text-align:center}
+.sos a b{display:block;font-size:22px;color:#ffb3bd;line-height:1.2}
+.sos a span{font-size:12px;color:var(--text)}
+.sos small,.duty small{display:block;color:var(--muted);font-size:12px;margin-top:6px}
+.duty{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
+.duty .shop span{font-weight:600}
 .cta{display:block;text-align:center;background:var(--sand);color:#1a1a1a;font-weight:800;padding:14px;border-radius:12px;margin:4px 0 18px}
 .empty{text-align:center;color:var(--muted);padding:28px 8px}
 .empty a{color:var(--sand);font-weight:700}
@@ -74,6 +83,21 @@ footer a{color:var(--sand);font-weight:700}
     <h1>دليل الأبيض سيدي الشيخ</h1>
     <p>الخدمات والمحلات القريبة منك، وتواصل مباشر عبر الهاتف أو واتساب</p>
   </header>
+
+  <section class="sos" aria-label="أرقام الطوارئ">
+    <h2>أرقام الطوارئ</h2>
+    <div class="grid">
+      <a href="tel:17"><b>17</b><span>الشرطة</span></a>
+      <a href="tel:1055"><b>1055</b><span>الدرك الوطني</span></a>
+      <a href="tel:14"><b>14</b><span>الحماية المدنية</span></a>
+    </div>
+    <small>أرقام مجانية. أرقام أخرى: الأمن الوطني 1548، الحماية المدنية 1021.</small>
+  </section>
+
+  <section class="duty" aria-label="الصيدليات المناوبة">
+    <h2>💊 الصيدليات المناوبة اليوم</h2>
+    <div id="duty"></div>
+  </section>
 
   <a class="cta" id="cta" href="#">أضف محلك أو خدمتك مجانًا</a>
 
@@ -91,6 +115,12 @@ footer a{color:var(--sand);font-weight:700}
 <script>
 /* ===== إعدادات ===== */
 const OWNER = "213557342198"; // رقم صاحب الدليل (واتساب)
+
+/* ===== الصيدليات المناوبة =====
+   حدّث هذا الجزء كل أسبوع. مثال:
+   const DUTY = { period:"من 27 أكتوبر إلى 2 نوفمبر",
+     shops:[{n:"صيدلية النور", p:"0555123456", a:"حي السلام"}] };  */
+const DUTY = { period:"", shops:[] };
 
 /* ===== البيانات =====
    لإضافة محل: ضع {n:"اسم المحل", p:"0555123456"} داخل shops
@@ -232,6 +262,24 @@ q.addEventListener("input", () => {
   });
   none.hidden = any;
 });
+
+/* ===== عرض الصيدليات المناوبة ===== */
+(function () {
+  const box = document.getElementById("duty");
+  if (!DUTY.shops.length) {
+    box.innerHTML = `<div class="shop soon"><span>سيُنشر برنامج المناوبة هنا قريبًا</span>` +
+      `<a class="b add" href="${wa("السلام عليكم، أنا صيدلي وأريد إضافة صيدليتي إلى برنامج المناوبة")}">أنا صيدلي</a></div>`;
+    return;
+  }
+  DUTY.shops.forEach(sp => {
+    const row = el("div", "shop");
+    row.innerHTML = `<span>${esc(sp.n)}${sp.a ? `<small>${esc(sp.a)}</small>` : ""}</span>` +
+      `<div class="acts"><a class="b call" href="tel:+${intl(sp.p)}">اتصال</a>` +
+      `<a class="b" href="${wa("السلام عليكم، أبحث عن دواء", intl(sp.p))}">واتساب</a></div>`;
+    box.append(row);
+  });
+  if (DUTY.period) box.append(el("small", "", "المناوبة: " + esc(DUTY.period)));
+})();
 
 /* ===== روابط التواصل ===== */
 const hello = "السلام عليكم، أريد إضافة محلي أو خدمتي إلى الدليل";
