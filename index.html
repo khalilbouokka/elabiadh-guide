@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>دليل الأبيض سيدي الشيخ التجاري</title>
+<!-- خط تجوال من جوجل -->
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+<!-- أيقونات فونت أوسم -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+​<style>
+:root {
+--primary: #2563eb;
+--primary-dark: #1d4ed8;
+--accent: #10b981;
+--bg-body: #f8fafc;
+--card-bg: #ffffff;
+--text-main: #0f172a;
+--text-muted: #64748b;
+--border: #e2e8f0;
+--whatsapp: #25d366;
+}
+​* {
+box-sizing: border-box;
+margin: 0;
+padding: 0;
+font-family: 'Tajawal', sans-serif;
+}
+​body {
+background-color: var(--bg-body);
+color: var(--text-main);
+line-height: 1.6;
+padding-bottom: 90px;
+}
+​/* الهيدر والعنوان */
+header {
+background: linear-gradient(135deg, #1e3a8a, var(--primary));
+color: white;
+padding: 25px 20px 20px 20px;
+text-align: center;
+border-bottom-left-radius: 24px;
+border-bottom-right-radius: 24px;
+box-shadow: 0 10px 25px rgba(37, 99, 235, 0.2);
+}
+​header h1 {
+font-size: 1.6rem;
+font-weight: 800;
+margin-bottom: 6px;
+}
+​header p {
+font-size: 0.95rem;
+opacity: 0.9;
+margin-bottom: 15px;
+}
+​/* زر إضافة خدمة فرعي في الهيدر */
+.add-btn-header {
+display: inline-flex;
+align-items: center;
+gap: 8px;
+background-color: rgba(255, 255, 255, 0.2);
+color: white;
+padding: 8px 16px;
+border-radius: 20px;
+font-size: 0.85rem;
+font-weight: 600;
+text-decoration: none;
+backdrop-filter: blur(5px);
+border: 1px solid rgba(255, 255, 255, 0.3);
+transition: 0.3s;
+}
+​.container {
+max-width: 600px;
+margin: 0 auto;
+padding: 15px;
+}
+​/* شريط البحث */
+.search-box {
+position: relative;
+margin-top: -20px;
+margin-bottom: 20px;
+}
+​.search-box input {
+width: 100%;
+padding: 14px 45px 14px 15px;
+border-radius: 14px;
+border: 1px solid var(--border);
+font-size: 0.95rem;
+box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+outline: none;
+}
+​.search-box i {
+position: absolute;
+right: 15px;
+top: 50%;
+transform: translateY(-50%);
+color: var(--text-muted);
+font-size: 1.1rem;
+}
+​/* الأقسام (التصفية) */
+.tags-scroll {
+display: flex;
+gap: 8px;
+overflow-x: auto;
+padding-bottom: 10px;
+margin-bottom: 20px;
+scrollbar-width: none;
+}
+​.tags-scroll::-webkit-scrollbar {
+display: none;
+}
+​.tag-btn {
+white-space: nowrap;
+padding: 8px 16px;
+border-radius: 20px;
+background-color: var(--card-bg);
+border: 1px solid var(--border);
+color: var(--text-muted);
+font-size: 0.85rem;
+font-weight: 600;
+cursor: pointer;
+transition: all 0.2s ease;
+}
+​.tag-btn.active {
+background-color: var(--primary);
+color: white;
+border-color: var(--primary);
+}
+​/* قائمة البطاقات */
+.cards-list {
+display: flex;
+flex-direction: column;
+gap: 12px;
+}
+​.card {
+background-color: var(--card-bg);
+border-radius: 16px;
+padding: 16px;
+border: 1px solid var(--border);
+box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+display: flex;
+justify-content: space-between;
+align-items: center;
+}
+​.card-info {
+flex-grow: 1;
+}
+​.card-badge {
+display: inline-block;
+padding: 3px 8px;
+background-color: #eff6ff;
+color: var(--primary);
+font-size: 0.75rem;
+font-weight: 700;
+border-radius: 6px;
+margin-bottom: 6px;
+}
+​.card-title {
+font-size: 1.05rem;
+font-weight: 700;
+color: var(--text-main);
+margin-bottom: 4px;
+}
+​.card-desc {
+font-size: 0.85rem;
+color: var(--text-muted);
+}
+​.card-actions {
+display: flex;
+gap: 8px;
+}
+​.action-btn {
+width: 42px;
+height: 42px;
+border-radius: 12px;
+display: flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+font-size: 1.1rem;
+transition: 0.2s;
+}
+​.btn-call {
+background-color: #eff6ff;
+color: var(--primary);
+}
+​.btn-whatsapp {
+background-color: #f0fdf4;
+color: var(--whatsapp);
+}
+​/* الزر العائم للتواصل والإضافة في الأسفل */
+.bottom-cta {
+position: fixed;
+bottom: 15px;
+left: 50%;
+transform: translateX(-50%);
+width: calc(100% - 30px);
+max-width: 570px;
+background-color: #15803d;
+color: white;
+padding: 14px 20px;
+border-radius: 16px;
+display: flex;
+align-items: center;
+justify-content: center;
+gap: 10px;
+text-decoration: none;
+font-weight: 700;
+font-size: 0.95rem;
+box-shadow: 0 10px 25px rgba(21, 128, 61, 0.35);
+z-index: 100;
+}
+​.no-results {
+text-align: center;
+padding: 40px 20px;
+color: var(--text-muted);
+display: none;
+}
+</style>
+</head>
+<body>
+​<!-- الهيدر -->
+<header>
+<h1>دليل الأبيض سيدي الشيخ</h1>
+<p>دليلك المحلي الفوري للخدمات، المحلات، والتواصل المباشر</p>
+<a href="https://wa.me/213557342198?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AF%D9%84%D9%8A%D9%8D%20%D8%A7%D9%84%D8%A3%D8%A8%D9%8A%D8%B6%20%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE" class="add-btn-header" target="_blank">
+<i class="fa-brands fa-whatsapp"></i> أضف محلك أو خدمتك مجاناً
+</a>
+</header>
+​<div class="container">
+<!-- شريط البحث -->
+<div class="search-box">
+<i class="fa-solid fa-magnifying-glass"></i>
+<input type="text" id="searchInput" placeholder="ابحث عن تاكسي، محل، صيانة، تقسيط...">
+</div>
+​<!-- أزرار التصفية -->
+<div class="tags-scroll" id="tagsContainer">
+<button class="tag-btn active" onclick="filterCategory('الكل')">الكل</button>
+<button class="tag-btn" onclick="filterCategory('تاكسي ونقل')">تاكسي ونقل</button>
+<button class="tag-btn" onclick="filterCategory('بيع بالتقسيط')">بيع بالتقسيط</button>
+<button class="tag-btn" onclick="filterCategory('هواتف وتكنولوجيا')">هواتف وتكنولوجيا</button>
+<button class="tag-btn" onclick="filterCategory('أواني وأثاث')">أواني وأثاث</button>
+<button class="tag-btn" onclick="filterCategory('صيدليات وخدمات')">صيدليات وخدمات</button>
+</div>
+​<!-- قائمة الخدمات -->
+<div class="cards-list" id="cardsList"></div>
+​<div class="no-results" id="noResults">
+<i class="fa-solid fa-store-slash" style="font-size: 2.5rem; margin-bottom: 10px;"></i>
+<p>لم نجد أي نتائج تطابق بحثك حالياً.</p>
+</div>
+</div>
+​<!-- زر الاتصال العائم عبر واتساب لإضافة محلات جديدة -->
+<a href="https://wa.me/213557342198?text=%D9%85%D8%B1%D8%AD%D8%A8%D8%A7%D9%8B%D8%8C%20%D8%A3%D8%B1%D9%8A%D8%AF%20%D8%A5%D8%B6%D8%A7%D9%81%D8%A9%20%D8%AE%D8%AF%D9%85%D8%AA%D9%8A%20%D9%81%D9%8A%20%D8%AF%D9%84%D9%8A%D9%84%20%D8%A7%D9%84%D8%A3%D8%A8%D9%8A%D8%B6%20%D8%B3%D9%8A%D8%AF%D9%8A%20%D8%A7%D9%84%D8%B4%D9%8A%D8%AE" class="bottom-cta" target="_blank">
+<i class="fa-brands fa-whatsapp" style="font-size: 1.3rem;"></i>
+<span>هل تملك محلاً؟ تواصل معنا لإضافة رقمك</span>
+</a>
+​<script>
+// البيانات الأولية للمحلات (يمكنك الإضافة والتعديل هنا دائماً)
+const initialData = [
+{ category: "تاكسي ونقل", title: "محمد تاكسي (رحلات داخلية وخارجية)", phone: "0661000000", desc: "خدمة 24/24 - نقل مسافرين ورحلات" },
+{ category: "تاكسي ونقل", title: "أحمد لنقل البضائع والسلع", phone: "0770000000", desc: "شاحنة صغيرة لنقل الأثاث والسلع" },
+{ category: "بيع بالتقسيط", title: "محل البركة للأجهزة والهواتف", phone: "0550000000", desc: "بيع الكهرومنزلية والهواتف بالتقسيط الميسر" },
+{ category: "هواتف وتكنولوجيا", title: "الشيخ فون لصيانة الهواتف", phone: "0662000000", desc: "بيع وتصليح جميع أنواع الهواتف والإكسسوارات" },
+{ category: "أواني وأثاث", title: "معرض الأواني المنزلية", phone: "0771000000", desc: "أحدث مستلزمات المطبخ والتجهيزات المنزلية" },
+{ category: "صيدليات وخدمات", title: "صيدلية المركز (مناوبة)", phone: "0551000000", desc: "وسط المدينة - توفر جميع الأدوية والخدمات" }
+];
+​let currentCategory = "الكل";
+​function renderCards(data) {
+const container = document.getElementById('cardsList');
+const noResults = document.getElementById('noResults');
+container.innerHTML = '';
+​if (data.length === 0) {
+noResults.style.display = 'block';
+return;
+}
+noResults.style.display = 'none';
+​data.forEach(item => {
+const formattedPhone = item.phone.startsWith('0') ? '213' + item.phone.substring(1) : item.phone;
+const card = document.createElement('div');
+card.className = 'card';
+card.innerHTML = <div class="card-info"> <span class="card-badge">${item.category}</span> <div class="card-title">${item.title}</div> <div class="card-desc">${item.desc}</div> </div> <div class="card-actions"> <a href="tel:${item.phone}" class="action-btn btn-call" title="اتصال"> <i class="fa-solid fa-phone"></i> </a> <a href="https://wa.me/${formattedPhone}" target="_blank" class="action-btn btn-whatsapp" title="واتساب"> <i class="fa-brands fa-whatsapp"></i> </a> </div>;
+container.appendChild(card);
+});
+}
+​function filterCategory(cat) {
+currentCategory = cat;
+document.querySelectorAll('.tag-btn').forEach(btn => {
+btn.classList.toggle('active', btn.innerText === cat);
+});
+applyFilters();
+}
+​function applyFilters() {
+const query = document.getElementById('searchInput').value.toLowerCase();
+const filtered = initialData.filter(item => {
+const matchesCat = currentCategory === "الكل" || item.category === currentCategory;
+const matchesSearch = item.title.toLowerCase().includes(query) ||
+item.desc.toLowerCase().includes(query) ||
+item.category.toLowerCase().includes(query);
+return matchesCat && matchesSearch;
+});
+renderCards(filtered);
+}
+​document.getElementById('searchInput').addEventListener('input', applyFilters);
+​// التشغيل عند التحميل
+renderCards(initialData);
+</script>
+</body>
+</html>
