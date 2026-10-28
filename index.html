@@ -60,7 +60,7 @@
             background-color: var(--accent);
             color: #fff;
             text-align: center;
-            padding: 12px;
+            padding: 14px;
             border-radius: 12px;
             text-decoration: none;
             font-weight: bold;
@@ -84,33 +84,26 @@
             outline: none;
         }
 
-        /* تنسيق الأيقونات لتكون عريضة وتحت بعضها */
         .categories-list {
             display: flex;
             flex-direction: column;
-            gap: 12px;
+            gap: 16px;
             margin-bottom: 24px;
         }
 
         .category-card {
-            display: flex;
-            align-items: center;
             background-color: var(--card-bg);
             border: 1px solid var(--border-color);
-            padding: 16px;
             border-radius: 12px;
-            text-decoration: none;
-            color: var(--text-main);
-            transition: transform 0.1s, border-color 0.2s;
-            width: 100%;
+            overflow: hidden;
         }
 
-        .category-card:active {
-            transform: scale(0.98);
-        }
-
-        .category-card:hover {
-            border-color: var(--accent);
+        .category-header {
+            display: flex;
+            align-items: center;
+            padding: 16px;
+            cursor: pointer;
+            user-select: none;
         }
 
         .cat-icon {
@@ -129,12 +122,49 @@
             color: var(--text-muted);
         }
 
-        .empty-state {
-            text-align: center;
-            padding: 40px 20px;
-            background-color: var(--card-bg);
-            border-radius: 12px;
-            border: 1px solid var(--border-color);
+        /* قائمة المحلات داخل كل قسم */
+        .shops-list {
+            display: block;
+            background-color: #161616;
+            border-top: 1px solid var(--border-color);
+            padding: 12px;
+        }
+
+        .shop-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #282828;
+        }
+
+        .shop-item:last-child {
+            border-bottom: none;
+        }
+
+        .shop-name {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .shop-actions a {
+            display: inline-block;
+            padding: 6px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 4px;
+        }
+
+        .btn-call {
+            background-color: #2563eb;
+            color: white;
+        }
+
+        .btn-wa {
+            background-color: #059669;
+            color: white;
         }
 
         footer {
@@ -156,56 +186,77 @@
         <header>
             <h1>دليل الأبيض سيدي الشيخ</h1>
             <p>دليلك المحلي الفوري للخدمات، المحلات، والتواصل المباشر</p>
+            
+            <!-- هذا الزر يوجه لواتساب الخاص بك لإضافة محلات جديدة -->
             <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20محلي%20أو%20خدمتي%20إلى%20الدليل" class="add-btn">💬 أضف محلك أو خدمتك مجاناً</a>
         </header>
 
-        <!-- خانة البحث -->
         <input type="text" class="search-box" placeholder="ابحث عن تاكسي، محل، صيانة، تقسيط...">
 
-        <!-- التصنيفات عريضة وتحت بعضها -->
         <div class="categories-list">
-            <a href="https://wa.me/213557342198?text=استفسار%20عن%20قسم%20التاكسي%20والنقل" class="category-card">
-                <span class="cat-icon">🚗</span>
-                <div class="cat-info">
-                    <h3>تاكسي ونقل</h3>
-                    <p>سيارات الأجرة، نقل البضائع، والخدمات اليومية</p>
+            
+            <!-- قسم التاكسي -->
+            <div class="category-card">
+                <div class="category-header">
+                    <span class="cat-icon">🚗</span>
+                    <div class="cat-info">
+                        <h3>تاكسي ونقل</h3>
+                        <p>سيارات الأجرة ونقل البضائع</p>
+                    </div>
                 </div>
-            </a>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">تاكسي سريعة (داخل الولاية)</span>
+                        <div class="shop-actions">
+                            <a href="tel:0660000000" class="btn-call">📞 اتصال</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <a href="https://wa.me/213557342198?text=استفسار%20عن%20قسم%20البيع%20بالتقسيط" class="category-card">
-                <span class="cat-icon">💳</span>
-                <div class="cat-info">
-                    <h3>بيع بالتقسيط</h3>
-                    <p>أجهزة إلكترونية، كهرومنزلية، ومستلزمات بالتقسيط</p>
+            <!-- قسم البيع بالتقسيط -->
+            <div class="category-card">
+                <div class="category-header">
+                    <span class="cat-icon">💳</span>
+                    <div class="cat-info">
+                        <h3>بيع بالتقسيط</h3>
+                        <p>أجهزة كهرومنزلية وإلكترونيات</p>
+                    </div>
                 </div>
-            </a>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">محل التقسيط الذهبي</span>
+                        <div class="shop-actions">
+                            <a href="tel:0550000000" class="btn-call">📞 اتصال</a>
+                            <a href="https://wa.me/213550000000" class="btn-wa">💬 واتساب</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <a href="https://wa.me/213557342198?text=استفسار%20عن%20قسم%20الهواتف" class="category-card">
-                <span class="cat-icon">📱</span>
-                <div class="cat-info">
-                    <h3>هواتف وتكنولوجيا</h3>
-                    <p>صيانة الهواتف، بيع الاكسسوارات، والحلول التقنية</p>
+            <!-- قسم الهواتف والتكنولوجيا -->
+            <div class="category-card">
+                <div class="category-header">
+                    <span class="cat-icon">📱</span>
+                    <div class="cat-info">
+                        <h3>هواتف وتكنولوجيا</h3>
+                        <p>صيانة وإكسسوارات الهواتف</p>
+                    </div>
                 </div>
-            </a>
+                <div class="shops-list">
+                    <div class="shop-item">
+                        <span class="shop-name">محل الصيانة والتقنية</span>
+                        <div class="shop-actions">
+                            <a href="tel:0770000000" class="btn-call">📞 اتصال</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            <a href="https://wa.me/213557342198?text=استفسار%20عن%20قسم%20الأواني%20والأثاث" class="category-card">
-                <span class="cat-icon">🛋️</span>
-                <div class="cat-info">
-                    <h3>أواني وأثاث</h3>
-                    <p>تجهيزات المنازل، الأثاث، والأواني المنزلية</p>
-                </div>
-            </a>
-
-            <a href="https://wa.me/213557342198?text=استفسار%20عن%20قسم%20الصيدليات%20والخدمات" class="category-card">
-                <span class="cat-icon">🏥</span>
-                <div class="cat-info">
-                    <h3>صيدليات وخدمات</h3>
-                    <p>المصالح الحيوية، الصيدليات، والخدمات العامة</p>
-                </div>
-            </a>
         </div>
 
         <footer>
+            <!-- هذا الزر يوجه إلى واتساب الخاص بك أيضاً -->
             <p>هل تملك محلاً؟ <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20رقمي%20للدليل">تواصل معنا لإضافة رقمك</a></p>
         </footer>
     </div>
