@@ -70,6 +70,11 @@ header p{color:var(--muted);font-size:14px;margin-top:6px}
 .sos small,.duty small{display:block;color:var(--muted);font-size:12px;margin-top:6px}
 .duty{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px;margin-bottom:14px}
 .duty .shop span{font-weight:600}
+.support{background:var(--card);border:1px dashed var(--line);border-radius:14px;padding:14px;margin-top:20px;text-align:center}
+.support h2{font-size:15px;font-weight:700}
+.support p{color:var(--muted);font-size:13px;margin:6px 0 12px}
+.support .num{display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:10px;direction:ltr}
+.support .num code{background:var(--sub);padding:6px 10px;border-radius:8px;font-size:14px}
 .cta{display:block;text-align:center;background:var(--sand);color:#1a1a1a;font-weight:800;padding:14px;border-radius:12px;margin:4px 0 18px}
 .empty{text-align:center;color:var(--muted);padding:28px 8px}
 .empty a{color:var(--sand);font-weight:700}
@@ -89,9 +94,9 @@ footer a{color:var(--sand);font-weight:700}
     <div class="grid">
       <a href="tel:17"><b>17</b><span>الشرطة</span></a>
       <a href="tel:1055"><b>1055</b><span>الدرك الوطني</span></a>
-      <a href="tel:14"><b>14</b><span>الحماية المدنية</span></a>
+      <a href="tel:049636430"><b style="font-size:17px;direction:ltr">049636430</b><span>الحماية المدنية</span></a>
     </div>
-    <small>أرقام مجانية. أرقام أخرى: الأمن الوطني 1548، الحماية المدنية 1021.</small>
+    <small>رقم آخر: الأمن الوطني 1548.</small>
   </section>
 
   <section class="duty" aria-label="الصيدليات المناوبة">
@@ -108,6 +113,12 @@ footer a{color:var(--sand);font-weight:700}
   <main id="list"></main>
 
   <p class="empty" id="none" hidden>لا توجد نتائج. <a href="#" id="req">اطلب إضافة هذه الخدمة</a></p>
+
+  <section class="support" aria-label="دعم الدليل">
+    <h2>ساهم في تطوير الدليل</h2>
+    <p id="goal"></p>
+    <div id="pay"></div>
+  </section>
 
   <footer>هل تملك محلًا؟ <a href="#" id="foot">تواصل معنا لإضافة رقمك</a></footer>
 </div>
@@ -279,6 +290,30 @@ q.addEventListener("input", () => {
     box.append(row);
   });
   if (DUTY.period) box.append(el("small", "", "المناوبة: " + esc(DUTY.period)));
+})();
+
+/* ===== دعم الدليل =====
+   ضع رقم حسابك في ccp لإظهاره مع زر نسخ، أو اتركه فارغًا
+   فيظهر زر واتساب فقط ترسل لهم رقمك عبره.  */
+const DONATE = {
+  goal: "الدليل مجاني للجميع. دعمك الاختياري يغطي تحسين الموقع ونشر التطبيق على Google Play.",
+  ccp: "" // مثال: "رقم CCP أو RIP الخاص بك"
+};
+(function () {
+  document.getElementById("goal").textContent = DONATE.goal;
+  const pay = document.getElementById("pay");
+  if (DONATE.ccp) {
+    const n = el("div", "num");
+    n.innerHTML = `<code>${esc(DONATE.ccp)}</code>`;
+    const c = el("button", "b add", "نسخ");
+    c.type = "button";
+    c.onclick = () => navigator.clipboard && navigator.clipboard.writeText(DONATE.ccp).then(() => { c.textContent = "تم النسخ"; });
+    n.append(c);
+    pay.append(n);
+  }
+  const a = el("a", "b", "أريد دعم الدليل");
+  a.href = wa("السلام عليكم، أريد دعم دليل الأبيض سيدي الشيخ");
+  pay.append(a);
 })();
 
 /* ===== روابط التواصل ===== */
