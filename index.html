@@ -1,663 +1,244 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل الأبيض سيدي الشيخ</title>
-    <style>
-        :root {
-            --bg-body: #121212;
-            --card-bg: #1e1e1e;
-            --sub-bg: #181818;
-            --text-main: #f3f4f6;
-            --text-muted: #9ca3af;
-            --accent: #10b981;
-            --accent-hover: #059669;
-            --border-color: #2d3748;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#101826">
+<title>دليل الأبيض سيدي الشيخ</title>
+<style>
+:root{
+  --bg:#101826; --card:#172236; --sub:#1d2b44; --line:#2a3b5a;
+  --text:#f2ece0; --muted:#a3adc0; --sand:#e8c27a; --sand-d:#2b2a2c; --wa:#25a05a;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:"Segoe UI",Tahoma,system-ui,-apple-system,sans-serif;
+  line-height:1.6;padding:0 16px calc(24px + env(safe-area-inset-bottom));
+}
+.wrap{max-width:520px;margin:0 auto}
+a{color:inherit;text-decoration:none}
+button{font:inherit;color:inherit;background:none;border:0;cursor:pointer;text-align:inherit}
+:focus-visible{outline:2px solid var(--sand);outline-offset:2px}
 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: system-ui, -apple-system, sans-serif;
-        }
+header{padding:28px 0 16px}
+h1{font-size:28px;line-height:1.3;font-weight:800;color:var(--sand)}
+header p{color:var(--muted);font-size:14px;margin-top:6px}
 
-        body {
-            background-color: var(--bg-body);
-            color: var(--text-main);
-            padding: 16px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+.search{position:sticky;top:0;z-index:5;background:var(--bg);padding:8px 0 12px}
+.search input{
+  width:100%;padding:13px 16px;font:inherit;font-size:16px;color:var(--text);
+  background:var(--card);border:1px solid var(--line);border-radius:12px;outline:none;
+}
+.search input::placeholder{color:var(--muted)}
+.search input:focus{border-color:var(--sand)}
 
-        .container {
-            width: 100%;
-            max-width: 500px;
-        }
+.cat{background:var(--card);border:1px solid var(--line);border-radius:14px;margin-bottom:12px;overflow:hidden}
+.cat[hidden],.sub[hidden],.empty[hidden]{display:none}
+.hd{display:flex;align-items:center;gap:14px;width:100%;padding:14px}
+.ico{flex:none;width:46px;height:46px;border-radius:12px;background:var(--sand-d);display:grid;place-items:center;font-size:24px}
+.hd .t{flex:1;min-width:0}
+.hd h2{font-size:16px;font-weight:700}
+.hd small{display:block;color:var(--muted);font-size:12px}
+.chev{flex:none;width:10px;height:10px;border-inline-end:2px solid var(--muted);border-bottom:2px solid var(--muted);transform:rotate(45deg);transition:transform .2s}
+.open>.hd .chev{transform:rotate(-135deg)}
+.body{display:none;padding:4px 12px 12px;border-top:1px solid var(--line)}
+.open>.body{display:block}
 
-        header {
-            text-align: center;
-            margin-bottom: 24px;
-            padding: 20px 0;
-        }
+.sub{background:var(--sub);border-radius:10px;margin-top:8px;overflow:hidden}
+.sub .hd{padding:12px;gap:10px}
+.sub h3{font-size:14px;font-weight:600;flex:1}
+.sub .body{border-top:1px solid var(--line);padding:4px 12px 10px}
 
-        h1 {
-            font-size: 24px;
-            margin-bottom: 8px;
-            color: var(--text-main);
-        }
+.shop{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--line)}
+.shop:last-of-type{border-bottom:0}
+.shop span{font-size:14px}
+.soon span{color:var(--muted)}
+.acts{display:flex;gap:6px;flex:none}
+.b{padding:7px 12px;border-radius:9px;font-size:13px;font-weight:700;background:var(--wa);color:#fff}
+.b.call{background:var(--sand);color:#1a1a1a}
+.b.add{background:transparent;border:1px solid var(--sand);color:var(--sand)}
+.more{display:inline-block;margin-top:8px;font-size:13px;color:var(--sand)}
 
-        p {
-            color: var(--text-muted);
-            font-size: 14px;
-            margin-bottom: 16px;
-        }
-
-        .add-btn {
-            display: block;
-            width: 100%;
-            background-color: var(--accent);
-            color: #fff;
-            text-align: center;
-            padding: 14px;
-            border-radius: 12px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-bottom: 20px;
-            transition: background 0.2s;
-        }
-
-        .add-btn:hover {
-            background-color: var(--accent-hover);
-        }
-
-        .search-box {
-            width: 100%;
-            padding: 12px 16px;
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            color: var(--text-main);
-            font-size: 16px;
-            margin-bottom: 20px;
-            outline: none;
-        }
-
-        .categories-list {
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-            margin-bottom: 24px;
-        }
-
-        .category-card {
-            background-color: var(--card-bg);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: border-color 0.2s;
-        }
-
-        .category-card:hover {
-            border-color: var(--accent);
-        }
-
-        .category-header, .sub-header {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 16px;
-            cursor: pointer;
-            user-select: none;
-        }
-
-        .cat-main-info {
-            display: flex;
-            align-items: center;
-        }
-
-        .cat-icon {
-            font-size: 24px;
-            margin-left: 16px;
-        }
-
-        .cat-info h3 {
-            font-size: 16px;
-            margin-bottom: 4px;
-        }
-
-        .cat-info p {
-            font-size: 12px;
-            margin: 0;
-            color: var(--text-muted);
-        }
-
-        .arrow-icon {
-            color: var(--text-muted);
-            font-size: 14px;
-            transition: transform 0.3s ease;
-        }
-
-        .shops-list {
-            display: none;
-            background-color: #161616;
-            border-top: 1px solid var(--border-color);
-            padding: 8px 12px;
-        }
-
-        .category-card.active > .shops-list {
-            display: block;
-        }
-
-        .category-card.active > .category-header .arrow-icon,
-        .sub-category.active > .sub-header .arrow-icon {
-            transform: rotate(180deg);
-        }
-
-        .sub-category {
-            background-color: var(--sub-bg);
-            border: 1px solid #282828;
-            border-radius: 8px;
-            margin-bottom: 8px;
-            overflow: hidden;
-        }
-
-        .sub-header {
-            padding: 12px;
-            font-size: 14px;
-            font-weight: bold;
-        }
-
-        .sub-content {
-            display: none;
-            padding: 8px 12px;
-            background-color: #111111;
-            border-top: 1px solid #282828;
-        }
-
-        .sub-category.active > .sub-content {
-            display: block;
-        }
-
-        .shop-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 0;
-            border-bottom: 1px solid #222;
-        }
-
-        .shop-item:last-child {
-            border-bottom: none;
-        }
-
-        .shop-name {
-            font-size: 13px;
-        }
-
-        .btn-wa {
-            background-color: #059669;
-            color: white;
-            padding: 6px 12px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 12px;
-            font-weight: bold;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 30px;
-            font-size: 13px;
-            color: var(--text-muted);
-        }
-
-        footer a {
-            color: var(--accent);
-            text-decoration: none;
-        }
-    </style>
+.cta{display:block;text-align:center;background:var(--sand);color:#1a1a1a;font-weight:800;padding:14px;border-radius:12px;margin:4px 0 18px}
+.empty{text-align:center;color:var(--muted);padding:28px 8px}
+.empty a{color:var(--sand);font-weight:700}
+footer{text-align:center;color:var(--muted);font-size:13px;margin-top:20px}
+footer a{color:var(--sand);font-weight:700}
+</style>
 </head>
 <body>
+<div class="wrap">
+  <header>
+    <h1>دليل الأبيض سيدي الشيخ</h1>
+    <p>الخدمات والمحلات القريبة منك، وتواصل مباشر عبر الهاتف أو واتساب</p>
+  </header>
 
-    <div class="container">
-        <header>
-            <h1>دليل الأبيض سيدي الشيخ</h1>
-            <p>دليلك المحلي الفوري للخدمات، المحلات، والتواصل المباشر</p>
-            <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20محلي%20أو%20خدمتي%20إلى%20الدليل" class="add-btn">💬 أضف محلك أو خدمتك مجاناً</a>
-        </header>
+  <a class="cta" id="cta" href="#">أضف محلك أو خدمتك مجانًا</a>
 
-        <input type="text" class="search-box" placeholder="ابحث عن تاكسي، صيانة، مواد غذائية...">
+  <div class="search">
+    <input id="q" type="search" placeholder="ابحث: تاكسي، صيدلية، سباك..." autocomplete="off" aria-label="بحث">
+  </div>
 
-        <div class="categories-list">
+  <main id="list"></main>
 
-            <!-- 1. خدمات النقل والسيارات -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">🚗</span>
-                        <div class="cat-info">
-                            <h3>النقل والسيارات</h3>
-                            <p>كلونديستان، تاكسي، ونقل البضائع</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                
-                <div class="shops-list">
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🚕 كلونديستان</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة سائقين</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20كلونديستان" class="btn-wa">إضافة رقم</a>
-                            </div>
-                        </div>
-                    </div>
+  <p class="empty" id="none" hidden>لا توجد نتائج. <a href="#" id="req">اطلب إضافة هذه الخدمة</a></p>
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🚕 سيارات الأجرة (تاكسي)</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة التاكسي</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20سيارة%20تاكسي" class="btn-wa">إضافة رقم</a>
-                            </div>
-                        </div>
-                    </div>
+  <footer>هل تملك محلًا؟ <a href="#" id="foot">تواصل معنا لإضافة رقمك</a></footer>
+</div>
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>📦 نقل البضائع والشحن</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة وسائل النقل</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20نقل%20البضائع" class="btn-wa">إضافة رقم</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+<script>
+/* ===== إعدادات ===== */
+const OWNER = "213557342198"; // رقم صاحب الدليل (واتساب)
 
-            <!-- 2. البيع بالتقسيط -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">💳</span>
-                        <div class="cat-info">
-                            <h3>بيع بالتقسيط</h3>
-                            <p>أجهزة كهرومنزلية، هواتف، وأثاث</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                
-                <div class="shops-list">
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>📺 كهرومنزليات بالتقسيط</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة المحلات</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20كهرومنزليات%20بالتقسيط" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
+/* ===== البيانات =====
+   لإضافة محل: ضع {n:"اسم المحل", p:"0555123456"} داخل shops
+   مثال:  shops:[{n:"صيدلية النور", p:"0555123456"}]            */
+const DATA = [
+  {i:"🚗", t:"النقل والسيارات", d:"كلونديستان، تاكسي، ونقل البضائع", subs:[
+    {i:"🚕", t:"كلونديستان", k:"clandestin سائق", add:"خدمة كلونديستان", btn:"إضافة سائق", shops:[]},
+    {i:"🚖", t:"سيارات الأجرة (تاكسي)", k:"taxi", add:"سيارة تاكسي", btn:"إضافة تاكسي", shops:[]},
+    {i:"📦", t:"نقل البضائع والشحن", k:"شاحنة", add:"خدمة نقل البضائع", btn:"إضافة ناقل", shops:[]}
+  ]},
+  {i:"🏥", t:"الصحة والطب", d:"صيدليات، أطباء وعيادات", subs:[
+    {i:"💊", t:"الصيدليات والمناوبة", k:"pharmacie دواء", add:"صيدلية", btn:"إضافة صيدلية", shops:[]},
+    {i:"🩺", t:"الأطباء والعيادات", k:"docteur طبيب", add:"عيادة طبية", btn:"إضافة عيادة", shops:[]}
+  ]},
+  {i:"🛒", t:"مواد غذائية ومتاجر", d:"خضار وفواكه، ومواد غذائية عامة", subs:[
+    {i:"🍎", t:"الخضار والفواكه", k:"خضرة", add:"محل خضار وفواكه", btn:"إضافة محل", shops:[]},
+    {i:"🥫", t:"المواد الغذائية العامة", k:"épicerie بقالة", add:"متجر مواد غذائية", btn:"إضافة محل", shops:[]}
+  ]},
+  {i:"📱", t:"هواتف وإكسسوارات", d:"بيع الهواتف والإكسسوارات والصيانة", subs:[
+    {i:"🔧", t:"بيع الهواتف والإكسسوارات والصيانة", k:"téléphone portable", add:"محل هواتف", btn:"إضافة محل", shops:[]}
+  ]},
+  {i:"🏠", t:"الأثاث والأجهزة والأواني", d:"أثاث منزلي، كهرومنزلية، وأواني", subs:[
+    {i:"🍽️", t:"الأواني المنزلية", k:"vaisselle", add:"محل أواني", btn:"إضافة محل", shops:[]},
+    {i:"🛋️", t:"الأثاث والديكور", k:"meuble", add:"محل أثاث", btn:"إضافة محل", shops:[]},
+    {i:"🧺", t:"الأجهزة الكهرومنزلية", k:"ثلاجة غسالة", add:"محل أجهزة كهرومنزلية", btn:"إضافة محل", shops:[]}
+  ]},
+  {i:"💳", t:"البيع بالتقسيط", d:"كهرومنزلية، هواتف، وأثاث بالتقسيط", subs:[
+    {i:"📺", t:"كهرومنزلية بالتقسيط", k:"crédit", add:"محل كهرومنزلية بالتقسيط", btn:"إضافة محل", shops:[]},
+    {i:"📲", t:"هواتف وإلكترونيات بالتقسيط", k:"crédit", add:"محل هواتف بالتقسيط", btn:"إضافة محل", shops:[]},
+    {i:"🪑", t:"أثاث وتجهيزات بالتقسيط", k:"crédit", add:"محل أثاث بالتقسيط", btn:"إضافة محل", shops:[]}
+  ]},
+  {i:"🛠️", t:"الصيانة والمهن الحرة", d:"خياطة، سباكة، كهرباء، تكييف، بناء، حلويات", subs:[
+    {i:"✂️", t:"الخياطة", k:"خياط couture", add:"خدمة خياطة", btn:"إضافة خياط", shops:[]},
+    {i:"🚰", t:"السباكة", k:"سباك plombier", add:"خدمة سباكة", btn:"إضافة سباك", shops:[]},
+    {i:"💡", t:"الكهرباء", k:"كهربائي électricien", add:"خدمة كهرباء", btn:"إضافة كهربائي", shops:[]},
+    {i:"❄️", t:"التكييف والتبريد", k:"مكيف clim", add:"خدمة تكييف", btn:"إضافة تقني", shops:[]},
+    {i:"🧱", t:"البناء (Maçon)", k:"بناء maçon", add:"خدمة بناء (Maçon)", btn:"إضافة بنّاء", shops:[]},
+    {i:"🎂", t:"الحلويات والقاطو", k:"gâteau حلوى", add:"خدمة صنع الحلويات والقاطو", btn:"إضافة صانع حلوى", shops:[]}
+  ]},
+  {i:"💍", t:"مجوهرات وذهب", d:"محلات بيع الحلي والمجوهرات", subs:[
+    {i:"💎", t:"محلات المجوهرات", k:"bijoux حلي", add:"محل مجوهرات", btn:"إضافة محل", shops:[]}
+  ]},
+  {i:"🛵", t:"خدمات التوصيل", d:"توصيل سريع للطلبات والمشتريات (Livreur)", subs:[
+    {i:"📍", t:"عمال التوصيل", k:"livreur توصيل", add:"خدمة التوصيل (Livreur)", btn:"إضافة موصّل", shops:[]}
+  ]}
+];
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>📱 هواتف وإلكترونيات بالتقسيط</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة المحلات</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20هواتف%20بالتقسيط" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
+/* ===== أدوات ===== */
+const wa = (msg, num = OWNER) => "https://wa.me/" + num + "?text=" + encodeURIComponent(msg);
+const intl = p => { p = String(p).replace(/\D/g, ""); return p.startsWith("0") ? "213" + p.slice(1) : p; };
+const norm = s => s.toLowerCase().replace(/[\u064B-\u0652\u0640]/g, "").replace(/[أإآ]/g, "ا").replace(/ى/g, "ي").replace(/ة/g, "ه");
+const el = (tag, cls, html) => { const e = document.createElement(tag); if (cls) e.className = cls; if (html != null) e.innerHTML = html; return e; };
+const esc = s => s.replace(/[&<>"]/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[c]));
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🛋️ أثاث وتجهيزات بالتقسيط</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة المحلات</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20أثاث%20بالتقسيط" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+/* ===== بناء الصفحة ===== */
+const list = document.getElementById("list");
+const cards = [];
 
-            <!-- 3. الصحة والخدمات الطبية -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">🏥</span>
-                        <div class="cat-info">
-                            <h3>الصحة والطب</h3>
-                            <p>صيدليات، أطباء وعيادات</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                
-                <div class="shops-list">
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>💊 الصيدليات والصيدليات المناوبة</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة الصيدليات</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20صيدلية" class="btn-wa">إضافة صيدلية</a>
-                            </div>
-                        </div>
-                    </div>
+function head(cls, icon, title, desc) {
+  const b = el("button", "hd");
+  b.type = "button";
+  b.setAttribute("aria-expanded", "false");
+  b.innerHTML = (icon ? `<span class="ico">${icon}</span>` : "") +
+    `<span class="t"><${cls}>${esc(title)}</${cls}>${desc ? `<small>${esc(desc)}</small>` : ""}</span><span class="chev"></span>`;
+  return b;
+}
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>👨‍⚕️ الأطباء والعيادات الطبية</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة العيادات</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20عيادة%20طبيبة" class="btn-wa">إضافة عيادة</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+function toggle(box, btn, force) {
+  const open = force != null ? force : !box.classList.contains("open");
+  box.classList.toggle("open", open);
+  btn.setAttribute("aria-expanded", open);
+}
 
-            <!-- 4. هواتف وإكسسوارات (مضاف جديد حسب طلبك) -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">📱</span>
-                        <div class="cat-info">
-                            <h3>هواتف وإكسسوارات</h3>
-                            <p>محلات بيع الهواتف، الإكسسوارات، والصيانة</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                
-                <div class="shops-list">
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>📱 بيع الهواتف والإكسسوارات والصيانة</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة محلات الهواتف</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20هواتف" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+DATA.forEach(cat => {
+  const box = el("section", "cat");
+  const hb = head("h2", cat.i, cat.t, cat.d);
+  const body = el("div", "body");
+  hb.onclick = () => toggle(box, hb);
+  box.append(hb, body);
 
-            <!-- 5. الأواني والأثاث والأجهزة الكهرومنزلية (معدل حسب طلبك) -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">🏠</span>
-                        <div class="cat-info">
-                            <h3>الأثاث والأجهزة الكهرومنزلية والأواني</h3>
-                            <p>أثاث منزلي، أجهزة كهرومنزلية، وأواني</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                
-                <div class="shops-list">
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🍽️ الأواني المنزلية والتجهيزات</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة محلات الأواني</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20أواني" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
+  const subs = cat.subs.map(s => {
+    const sb = el("div", "sub");
+    const sh = head("h3", s.i, s.t);
+    const sbody = el("div", "body");
+    sh.onclick = () => toggle(sb, sh);
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🛋️ الأثاث والديكور المنزلي</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة معارض الأثاث</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20أثاث" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
+    s.shops.forEach(sp => {
+      const row = el("div", "shop", `<span>${esc(sp.n)}</span>`);
+      const acts = el("div", "acts");
+      acts.innerHTML = `<a class="b call" href="tel:+${intl(sp.p)}">اتصال</a>` +
+        `<a class="b" href="${wa("السلام عليكم، وجدت رقمك في دليل الأبيض سيدي الشيخ", intl(sp.p))}">واتساب</a>`;
+      row.append(acts);
+      sbody.append(row);
+    });
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>⚡ الأجهزة الكهرومنزلية</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة محلات الأجهزة الكهرومنزلية</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20أجهزة%20كهرومنزلية" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+    const addLink = wa("السلام عليكم، أريد إضافة " + s.add + " إلى الدليل");
+    if (!s.shops.length) {
+      sbody.append(el("div", "shop soon",
+        `<span>سيُضاف أول رقم هنا قريبًا</span><a class="b add" href="${addLink}">${esc(s.btn)}</a>`));
+    } else {
+      sbody.append(el("a", "more", "+ " + esc(s.btn)));
+      sbody.lastChild.href = addLink;
+    }
 
-            <!-- 6. مواد غذائية ومتاجر عامة -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">🛒</span>
-                        <div class="cat-info">
-                            <h3>مواد غذائية ومتاجر</h3>
-                            <p>خضار وفواكه، ومواد غذائية عامة</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                
-                <div class="shops-list">
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🍎 الخضار والفواكه</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة محلات الخضار</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20محل%20خضار%20وفواكه" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
+    sb.append(sh, sbody);
+    body.append(sb);
+    return {sb, sh, text: norm(s.t + " " + (s.k || "") + " " + s.shops.map(x => x.n).join(" "))};
+  });
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🥫 المواد الغذائية العامة (المواد العامة)</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة المتاجر</span>
-                                <a href="https://wa.me/213557342198?text=إضافة%20متجر%20مواد%20غذائية" class="btn-wa">إضافة محل</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  list.append(box);
+  cards.push({box, hb, subs, text: norm(cat.t + " " + cat.d)});
+});
 
-            <!-- 7. خدمات الصيانة والمهن الحرة -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">🛠️</span>
-                        <div class="cat-info">
-                            <h3>خدمات الصيانة والمهن</h3>
-                            <p>خياطة، سباكة، كهرباء، بناء، وحلويات</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                
-                <div class="shops-list">
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>✂️ الخياطة والخياطون</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة الخياطين</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20خياطة" class="btn-wa">إضافة خياط</a>
-                            </div>
-                        </div>
-                    </div>
+/* ===== البحث ===== */
+const q = document.getElementById("q"), none = document.getElementById("none");
+q.addEventListener("input", () => {
+  const v = norm(q.value.trim());
+  let any = false;
+  cards.forEach(c => {
+    if (!v) {
+      c.box.hidden = false;
+      c.subs.forEach(s => s.sb.hidden = false);
+      toggle(c.box, c.hb, false);
+      c.subs.forEach(s => toggle(s.sb, s.sh, false));
+      any = true; return;
+    }
+    const catHit = c.text.includes(v);
+    let subHit = false;
+    c.subs.forEach(s => {
+      const hit = s.text.includes(v);
+      s.sb.hidden = !(hit || catHit);
+      toggle(s.sb, s.sh, hit);
+      if (hit) subHit = true;
+    });
+    const show = catHit || subHit;
+    c.box.hidden = !show;
+    toggle(c.box, c.hb, show);
+    if (show) any = true;
+  });
+  none.hidden = any;
+});
 
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🚰 السباكة والترصيص الصحي</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة السباكين</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20سباكة" class="btn-wa">إضافة سباك</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>⚡ الكهرباء العامة والمعمارية</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة الكهربائيين</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20كهربائي" class="btn-wa">إضافة كهربائي</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>❄️ التكييف والتبريد</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة تقنيي التكييف</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20تكييف" class="btn-wa">إضافة تقني</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🧱 البناء وأشغال البناء (Maçon)</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة البنائين</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20بناء%20Macond" class="btn-wa">إضافة بناء</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="sub-category">
-                        <div class="sub-header" onclick="toggleAccordion(event, this)">
-                            <span>🎂 صناع الحلوى والقاطو (الحلويات)</span>
-                            <span class="arrow-icon">▼</span>
-                        </div>
-                        <div class="sub-content">
-                            <div class="shop-item">
-                                <span class="shop-name">قريبا يتم إضافة صناع الحلويات</span>
-                                <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20صنع%20الحلوى%20والقاطو" class="btn-wa">إضافة صانع حلوى</a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 8. مجوهرات وذهب -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">💍</span>
-                        <div class="cat-info">
-                            <h3>مجوهرات وذهب</h3>
-                            <p>محلات بيع الحلي والمجوهرات</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                <div class="shops-list">
-                    <div class="shop-item">
-                        <span class="shop-name">قريبا يتم إضافة المحلات</span>
-                        <a href="https://wa.me/213557342198?text=أريد%20إضافة%20محل%20مجوهرات" class="btn-wa">إضافة محل</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- 9. خدمات التوصيل (Livreur) -->
-            <div class="category-card">
-                <div class="category-header" onclick="toggleAccordion(event, this)">
-                    <div class="cat-main-info">
-                        <span class="cat-icon">🛵</span>
-                        <div class="cat-info">
-                            <h3>خدمات التوصيل (Livreur)</h3>
-                            <p>خدمات التوصيل السريع للطلبات والمشتريات</p>
-                        </div>
-                    </div>
-                    <span class="arrow-icon">▼</span>
-                </div>
-                <div class="shops-list">
-                    <div class="shop-item">
-                        <span class="shop-name">قريبا يتم إضافة عمال التوصيل</span>
-                        <a href="https://wa.me/213557342198?text=أريد%20إضافة%20خدمة%20التوصيل%20Livreur" class="btn-wa">إضافة ليفريور</a>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-        <footer>
-            <p>هل تملك محلاً؟ <a href="https://wa.me/213557342198?text=السلام%20عليكم،%20أريد%20إضافة%20رقمي%20للدليل">تواصل معنا لإضافة رقمك</a></p>
-        </footer>
-    </div>
-
-    <script>
-        function toggleAccordion(event, element) {
-            event.stopPropagation();
-            const parent = element.parentElement;
-            parent.classList.toggle('active');
-        }
-    </script>
+/* ===== روابط التواصل ===== */
+const hello = "السلام عليكم، أريد إضافة محلي أو خدمتي إلى الدليل";
+["cta", "foot"].forEach(id => document.getElementById(id).href = wa(hello));
+q.addEventListener("input", () => {
+  document.getElementById("req").href = wa("السلام عليكم، أبحث عن: " + q.value.trim() + " ولم أجده في الدليل");
+});
+</script>
 </body>
 </html>
